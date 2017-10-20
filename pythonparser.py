@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 import sys
 import argparse
@@ -53,12 +55,14 @@ def plot(data):
 	gp.write('pause -1')
 	print 'Done!!'
 
-if __name__ == '__main__':
+def main():
 	parser = argparse.ArgumentParser(description = 'Process the tracefiles and print the throughput')
 	parser.add_argument('filenames' , metavar='filename', type=str , nargs='+',
-						help='An ns2 tracefile for which you want the throughput in mbps')
+						help='ns2 tracefiles for which you want the throughputs in mbps. The throughputs will be used to generate the graph')
 	args = parser.parse_args()
 	data = throughput(sorted(args.filenames, key=psize))
 	create_file(data)
 	plot(data)
 
+if __name__ == '__main__':
+	main()
