@@ -11,5 +11,5 @@ This will generate a gnuplot script file ready to plot the values stored in a DA
 python pythonparser.py packet_size_*.tr (for Linux and Unix)<br>
 python pythonparser.py packet_size_64.tr packet_size_128.tr packet_size_256.tr ...... (For Windows cmd)<br>
 A file called throughputplot.gp will be created<br>
-gnuplot thhroughputplot.gp
+gnuplot throughputplot.gp
 
