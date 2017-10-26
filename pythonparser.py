@@ -49,8 +49,11 @@ def plot(data):
 	gp.write('set xlabel \"Packet Size(bytes)\"\n')
 	gp.write('set ylabel \"Throughput(mbps)\"\n')
 	gp.write('set xrange [64:5000]\n')
-	gp.write('set xtics (64 , 128 , 256 , 512 , 1024 , 2048 , 4096)\n')
-	gp.write('set logscale x\n')
+	l = []
+	for (key, value) in data:
+		l.append(str(key))
+	s = " , ".join(l)
+	gp.write('set xtics (' + s + ')\n')
 	gp.write('plot \"plotvalues.dat\" using 1:2:(sprintf(\"(%d,%f)\", $1 , $2)) with labels center offset 3.4,0.5 notitle, \'\' with linespoints pointtype 7\n')
 	gp.write('pause -1')
 	print 'Done!!'
